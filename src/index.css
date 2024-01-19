@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        background: #fff;
+    }
+    .slick-dots.slick-thumb {
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
+    }
+    .slick-dots > li {
+        width: 70px;
+    }
+}
+
+@font-face {
+    font-family: "SignikaNegative";
+    src: url("../fonts/SignikaNegative-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "lilitaOne";
+    src: url("../fonts/LilitaOne-Regular.ttf");
+}
