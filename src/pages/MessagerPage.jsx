@@ -19,6 +19,7 @@ function MessagerPage() {
     const params = useParams();
     const productId = params.productId;
     const receiverId = params.receiverId;
+
     useEffect(() => {
         dispatch(getAllMessage({ productId, receiverId }));
     }, []);
@@ -29,6 +30,7 @@ function MessagerPage() {
                 id: data.id,
                 name: data.requester.firstName,
                 text: data.message,
+                file: data.image,
                 senderId: data.requesterId,
                 receiverId: data.receiverId,
                 productId: data.productId,
@@ -36,6 +38,15 @@ function MessagerPage() {
             })),
         );
     }, [allMessage]);
+
+    useEffect(() => {
+        socket.on("receiveFile", (input) => {
+            setMessages((messages) => [...messages, input]);
+        });
+        return () => {
+            socket.off("receiveFile");
+        };
+    }, [socket]);
 
     useEffect(() => {
         socket.on("receiveMessage", (data) => {

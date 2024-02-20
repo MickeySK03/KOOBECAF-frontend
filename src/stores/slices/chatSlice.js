@@ -46,10 +46,14 @@ const chatSlice = createSlice({
         loading: false,
         error: "",
         success: false,
+        file: null,
     },
     reducers: {
         setInputChat: (state, actions) => {
             state.inputChat = actions.payload;
+        },
+        setFile: (state, actions) => {
+            state.file = actions.payload;
         },
     },
     extraReducers: (builder) => {
@@ -98,6 +102,6 @@ const chatSlice = createSlice({
     },
 });
 
-export const { setInputChat } = chatSlice.actions;
+export const { setInputChat, setFile } = chatSlice.actions;
 
 export default chatSlice.reducer;
